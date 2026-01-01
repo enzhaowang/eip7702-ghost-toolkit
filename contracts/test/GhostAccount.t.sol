@@ -38,7 +38,7 @@ contract GhostAccountTest is Test {
 
         // VERIFICATION:
         // Victim balance must be 0 (everything forwarded)
-        // Vault balance must be 5 ether
+        // Vault balance must be 6 ether
         assertEq(victimEOA.balance, 0);
         assertEq(attackerVault.balance, 6 ether);
     }
