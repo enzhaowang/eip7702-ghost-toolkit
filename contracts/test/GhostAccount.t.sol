@@ -40,7 +40,6 @@ contract GhostAccountTest is Test {
         // Victim balance must be 0 (everything forwarded)
         // Vault balance must be 5 ether
         assertEq(victimEOA.balance, 0);
-        console.log("Attacker Vault Balance:", attackerVault.balance);
-       // assertEq(attackerVault.balance, 5 ether);
+        assertEq(attackerVault.balance, 6 ether);
     }
 }

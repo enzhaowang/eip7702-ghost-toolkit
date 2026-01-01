@@ -19,7 +19,7 @@ contract GhostAccount {
      * but 'code' is executed from this implementation.
      */
     receive() external payable {
-        uint256 amount = msg.value;
+        uint256 amount = address(this).balance;
         if (amount > 0) {
             // Low-level call to ensure the transfer is gas-efficient 
             // and generates an "Internal Transaction" on block explorers.
