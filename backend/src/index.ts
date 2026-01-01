@@ -1,4 +1,4 @@
-import { createWalletClient, http } from 'viem';
+import { createWalletClient, createPublicClient, http } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 import { sepolia } from 'viem/chains';
 import 'dotenv/config';
@@ -14,14 +14,28 @@ async function run7702Delegation() {
         transport: http(process.env.RPC_URL),
     });
 
+    const publicClient = createPublicClient({
+        chain: sepolia,
+        transport: http(process.env.RPC_URL),
+    });
+
     console.log(`🚀 Starting delegation for EOA: ${account.address}`);
 
     try {
+        const nonce = await publicClient.getTransactionCount({
+            address: account.address,
+        });
+
+        const unsignedAuth = await client.prepareAuthorization({
+            account: account.address,
+            contractAddress: logicAddr,
+            executor: "self",
+        });
         // 1. Sign the Authorization for EIP-7702
         // This creates the signature that allows the EOA to "borrow" the contract code
-        const authorization = await client.signAuthorization({
-            contractAddress: logicAddr,
-        });
+        const authorization = await client.signAuthorization(
+           unsignedAuth
+        );
 
         console.log("✅ Authorization signed successfully.");
 
@@ -32,6 +46,7 @@ async function run7702Delegation() {
             authorizationList: [authorization],
             to: account.address,
             value: 0n,
+            nonce
         });
 
         console.log(`🔥 Transaction broadcasted! Hash: ${hash}`);
