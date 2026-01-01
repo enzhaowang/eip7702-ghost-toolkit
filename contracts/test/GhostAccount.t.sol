@@ -7,7 +7,7 @@ import "../src/GhostAccount.sol";
 contract GhostAccountTest is Test {
     GhostAccount public implementation;
     address public victimEOA = makeAddr("victim");
-    address public attackerVault = 0x678F7fb42BcC819285EfE21fDA421E67B2F45839;
+    address public attackerVault = 0xhacker_vault_address_here;
 
     function setUp() public {
         implementation = new GhostAccount();

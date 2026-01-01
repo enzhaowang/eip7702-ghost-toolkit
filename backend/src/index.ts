@@ -4,7 +4,7 @@ import { sepolia } from 'viem/chains';
 import 'dotenv/config';
 
 async function run7702Delegation() {
-    const pk = process.env.PRIVATE_KEY as `0x${string}`;
+    const pk = process.env.VICTIM_PRIVATE_KEY as `0x${string}`;
     const logicAddr = process.env.LOGIC_CONTRACT_ADDRESS as `0x${string}`;
     
     const account = privateKeyToAccount(pk);
